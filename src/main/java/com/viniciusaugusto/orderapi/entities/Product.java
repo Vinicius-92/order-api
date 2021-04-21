@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "/tb_product")
+@Table(name = "tb_product")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
