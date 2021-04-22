@@ -29,11 +29,3 @@ INSERT INTO tb_order_item (quantity, price, product_id, order_id) VALUES (2, 499
 INSERT INTO tb_order_item (quantity, price, product_id, order_id) VALUES (1, 9999.0, 3, 4);
 INSERT INTO tb_order_item (quantity, price, product_id, order_id) VALUES (1, 2999.0, 1, 4);
 INSERT INTO tb_order_item (quantity, price, product_id, order_id) VALUES (42, 29.9, 6, 5);
-
-INSERT INTO tb_order_items (order_id, items_id) VALUES (2, 1);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (2, 2);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (3, 3);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (3, 4);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (4, 5);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (4, 6);
-INSERT INTO tb_order_items (order_id, items_id) VALUES (5, 7);

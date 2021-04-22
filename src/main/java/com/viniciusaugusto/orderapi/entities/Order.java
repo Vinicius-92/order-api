@@ -31,7 +31,7 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> items = new ArrayList<>();
 
     public double getTotal() {
