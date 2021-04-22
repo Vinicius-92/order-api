@@ -12,3 +12,10 @@ INSERT INTO tb_order (moment, status) VALUES ('2021-04-20T19:30:00Z', 1);
 INSERT INTO tb_order (moment, status) VALUES ('2021-03-20T08:30:00Z', 0);
 INSERT INTO tb_order (moment, status) VALUES ('2021-02-20T17:30:00Z', 2);
 INSERT INTO tb_order (moment, status) VALUES ('2021-01-20T14:30:00Z', 3);
+
+INSERT INTO tb_product (name, price) VALUES ('TV 4k 50"', 2999.0);
+INSERT INTO tb_product (name, price) VALUES ('PC Gamer RGB', 7800.0);
+INSERT INTO tb_product (name, price) VALUES ('Notebook i9 500gb SSD', 9999.0);
+INSERT INTO tb_product (name, price) VALUES ('Gaming Chair RaceX', 999.0);
+INSERT INTO tb_product (name, price) VALUES ('Mechanical Keyboard Anne Pro 2', 499.9);
+INSERT INTO tb_product (name, price) VALUES ('Pizza', 29.9);
