@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_order")
@@ -24,4 +26,23 @@ public class Order {
 
     @Column(nullable = false)
     private OrderStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @OneToMany
+    private List<OrderItem> items = new ArrayList<>();
+
+    public double getTotal() {
+        double sum = 0.0;
+        for (OrderItem item : items) {
+            sum += item.getSubTotal();
+        }
+        return sum;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
 }
