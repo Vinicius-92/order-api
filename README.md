@@ -15,11 +15,11 @@ A fully functional API that control order with the association with order items 
 
 ### What I've learned: 
 
-How to structure a Spring Boot Java application using best practices and SOLID principles, using dependencies from Maven like Lombok to save time and create more readable and easy to maintain code. I also learn got a better understading of associations (One to Many, Many to One, etc) using annotations.
+How to structure a Spring Boot Java application using best practices and SOLID principles, using dependencies from Maven like Lombok to save time and create more readable and easy to maintain code. I also learn got a better understanding of associations (One to Many, Many to One, etc) using annotations.
 
 ### How to use:
 
-You can use a API Test application, Postman or Insomnia, to test the endpoints you'll clone the project to your machine and run, you'll need Java 11 and Maven 3.8.1. The commands to clone and to run are the following:
+You can use an API Test application, Postman or Insomnia, to test the endpoints you'll clone the project to your machine and run, you'll need Java 11 and Maven 3.8.1. The commands to clone and to run are the following:
 
 Clone:
 ```shell script
@@ -38,7 +38,7 @@ GET - List all clients in database:
 /clients
 ```
 
-GET - Fecth a person by ID:
+GET - Fetch a person by ID:
 ```
 /clients/{id}
 ```
@@ -55,12 +55,12 @@ POST - Create person:
 JSON required in body:
 ```json
 {
-    "name": "Exemple name",
+    "name": "Example name",
     "email": "example@email.com"
 }
 ``` 
 
 ### To-do:
-* Separate the the class repository to delegate the responsability for the service class
-* Create a DTO object in order to improve the how the responses from endpoints can be more efficient
+* Separate the class repository to delegate the responsibility for the service class
+* Create a DTO object in order to improve how the responses from endpoints can be more efficient
 
