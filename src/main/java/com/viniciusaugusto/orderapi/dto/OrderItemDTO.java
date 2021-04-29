@@ -13,16 +13,16 @@ public class OrderItemDTO {
     private Long id;
     private Integer quantity;
     private Double price;
-    private ProductDTO product;
-    private OrderDTO order;
+    private String product;
+    private Long order;
     public double getSubTotal;
 
     public OrderItemDTO(OrderItem orderItem) {
         id = orderItem.getId();
         quantity = orderItem.getQuantity();
         price = orderItem.getPrice();
-        product = new ProductDTO(orderItem.getProduct());
-        order = new OrderDTO(orderItem.getOrder());
+        product = orderItem.getProduct().getName();
+        order = orderItem.getOrder().getId();
         getSubTotal = orderItem.getSubTotal();
     }
 }

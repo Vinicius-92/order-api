@@ -1,5 +1,6 @@
 package com.viniciusaugusto.orderapi.controllers;
 
+import com.viniciusaugusto.orderapi.dto.ProductDTO;
 import com.viniciusaugusto.orderapi.entities.Product;
 import com.viniciusaugusto.orderapi.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/products")
@@ -18,15 +20,17 @@ public class ProductController {
     private ProductRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
+    public ResponseEntity<List<ProductDTO>> findAll() {
         List<Product> list = repository.findAll();
-        return ResponseEntity.ok().body(list);
+        List<ProductDTO> dto = list.stream().map(ProductDTO::new).collect(Collectors.toList());
+        return ResponseEntity.ok().body(dto);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<Product>> findById(@PathVariable Long id) {
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
         Optional<Product> prod = repository.findById(id);
-        return ResponseEntity.ok().body(prod);
+        ProductDTO dto = new ProductDTO(prod.get());
+        return ResponseEntity.ok().body(dto);
     }
 
     @PostMapping
