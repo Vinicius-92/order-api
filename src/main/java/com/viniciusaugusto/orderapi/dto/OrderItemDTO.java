@@ -1,6 +1,5 @@
 package com.viniciusaugusto.orderapi.dto;
 
-import com.viniciusaugusto.orderapi.entities.Order;
 import com.viniciusaugusto.orderapi.entities.OrderItem;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ public class OrderItemDTO {
     private Integer quantity;
     private Double price;
     private ProductDTO product;
-    private Order order;
+    private OrderDTO order;
     public double getSubTotal;
 
     public OrderItemDTO(OrderItem orderItem) {
@@ -23,7 +22,7 @@ public class OrderItemDTO {
         quantity = orderItem.getQuantity();
         price = orderItem.getPrice();
         product = new ProductDTO(orderItem.getProduct());
-        order = orderItem.getOrder(); //Need to create OrderDTO
-        getSubTotal = orderItem.getSubTotal(); //Search how to implement subTotal method into DTO's
+        order = new OrderDTO(orderItem.getOrder());
+        getSubTotal = orderItem.getSubTotal();
     }
 }

@@ -1,5 +1,6 @@
 package com.viniciusaugusto.orderapi.controllers;
 
+import com.viniciusaugusto.orderapi.dto.ClientDTO;
 import com.viniciusaugusto.orderapi.entities.Client;
 import com.viniciusaugusto.orderapi.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -18,9 +20,11 @@ public class ClientController {
     private ClientRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<Client>> findAll() {
+    public ResponseEntity<List<ClientDTO>> findAll() {
         List<Client> list = repository.findAll();
-        return ResponseEntity.ok().body(list);
+        List<ClientDTO> clients;
+        clients = list.stream().map(ClientDTO::new).collect(Collectors.toList());
+        return ResponseEntity.ok().body(clients);
     }
 
     @GetMapping(value = "/{id}")
