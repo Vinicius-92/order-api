@@ -15,7 +15,7 @@ A fully functional API that control order with the association with order items 
 
 ### What I've learned: 
 
-How to structure a Spring Boot Java application using best practices and SOLID principles, using dependencies from Maven like Lombok to save time and create more readable and easy to maintain code. I also learn got a better understanding of associations (One to Many, Many to One, etc) using annotations.
+How to structure a Spring Boot Java application using best practices and SOLID principles, using dependencies from Maven like Lombok to save time and create more readable and easy to maintain code. I also learn got a better understanding of associations (One to Many, Many to One, etc) using annotations. I've also have learned the importance of DTO and Service classes.
 
 ### How to use:
 
@@ -33,30 +33,44 @@ mvn spring-boot:run
 
 #### Endpoints:
 
-GET - List all clients in database:
+GET - List all entities in database:
 ```
 /clients
+/orders
+/products
 ```
 
-GET - Fetch a person by ID:
+GET - Fetch specific data by ID:
 ```
 /clients/{id}
+/orders/{id}
+/products/{id}
 ```
 
-DELET - Delete person by ID:
+DELET - Delete a register by ID:
 ```
 /clients/{id}
+/orders/{id}
+/products/{id}
 ```
 
-POST - Create person:
+POST - Create entity instance:
 ```
 /clients/{id}
+/products/{id}
 ```
 JSON required in body:
 ```json
+Client:
 {
     "name": "Example name",
     "email": "example@email.com"
+}
+
+Product:
+{
+    "name": "Product Name",
+    "price": 1999.0
 }
 ``` 
 
@@ -65,4 +79,3 @@ JSON required in body:
 * ~Create a DTO object in order to improve how the responses from endpoints can be more efficient~ -> Done
 * ~Create a database to test application's endpoints~ -> Done
 * ~Create personalized exceptions~ -> Done
-
