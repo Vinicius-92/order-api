@@ -61,7 +61,8 @@ JSON required in body:
 ``` 
 
 ### To-do:
-* Separate the class repository to delegate the responsibility for the service class
+* ~Separate the class repository to delegate the responsibility for the service class~ -> Done
 * ~Create a DTO object in order to improve how the responses from endpoints can be more efficient~ -> Done
 * ~Create a database to test application's endpoints~ -> Done
+* ~Create personalized exceptions~ -> Done
 

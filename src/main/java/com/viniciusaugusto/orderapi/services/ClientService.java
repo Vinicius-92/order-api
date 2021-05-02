@@ -22,7 +22,7 @@ public class ClientService {
     }
 
     public ClientDTO findById(Long id) throws ClientNotFoundException {
-            return new ClientDTO(repository.findById(id).orElseThrow(() -> new ClientNotFoundException(id)));
+        return new ClientDTO(repository.findById(id).orElseThrow(() -> new ClientNotFoundException(id)));
      }
 
      public void insert(ClientDTO dto) {

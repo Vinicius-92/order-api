@@ -31,10 +31,10 @@ public class Order {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE)
     private List<OrderItem> items = new ArrayList<>();
 
-    public double getTotal() {
+     public double getTotal() {
         double sum = 0.0;
         for (OrderItem item : items) {
             sum += item.getSubTotal();
