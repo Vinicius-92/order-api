@@ -1,5 +1,6 @@
 package com.viniciusaugusto.orderapi.entities;
 
+import com.viniciusaugusto.orderapi.dto.ClientDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,9 @@ public class Client {
 
     @Column(nullable = false)
     private String email;
+
+    public Client(ClientDTO dto) {
+        this.name = dto.getName();
+        this.email = dto.getEmail();
+    }
 }

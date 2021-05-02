@@ -23,9 +23,6 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    private ClientRepository repository;
-
-    @Autowired
     private ClientService service;
 
     @GetMapping
@@ -40,8 +37,8 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ClientDTO> insert (@RequestBody ClientDTO client) {
-        return ResponseEntity.ok().body(service.insert(client));
+    public void insert (@RequestBody ClientDTO client) {
+        service.insert(client);
     }
 
     @DeleteMapping(value = "/{id}")

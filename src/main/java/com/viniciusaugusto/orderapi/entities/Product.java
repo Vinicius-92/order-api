@@ -1,5 +1,6 @@
 package com.viniciusaugusto.orderapi.entities;
 
+import com.viniciusaugusto.orderapi.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,9 @@ public class Product {
 
     @Column(nullable = false)
     private Double price;
+
+    public Product(ProductDTO dto) {
+        this.name = dto.getName();
+        this.price = dto.getPrice();
+    }
 }
