@@ -16,6 +16,10 @@ public class ClientService {
     @Autowired
     public ClientRepository repository;
 
+    public ClientService(ClientRepository repository) {
+        this.repository = repository;
+    }
+
     public List<ClientDTO> findAll() {
         List<Client> list = repository.findAll();
         return list.stream().map(ClientDTO::new).collect(Collectors.toList());
