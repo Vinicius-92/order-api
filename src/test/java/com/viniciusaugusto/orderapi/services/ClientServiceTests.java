@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,13 +19,12 @@ public class ClientServiceTests {
 
     private final ClientRepository repository = Mockito.mock(ClientRepository.class);
     private final ClientService service = new ClientService(repository);
+    private final Client templateClient = new Client(1L, "Vinicius", "vinicius@gmail.com");
 
     @BeforeEach
     void setUp() {
-        var cli = new Client(1L, "Vinicius", "vinicius@gmail.com");
-        var list = new ArrayList<Client>();
-        list.add(cli);
-        Mockito.when(repository.findById(1L)).thenReturn(java.util.Optional.of(cli));
+        var list = new ArrayList<Client>(List.of(templateClient));
+        Mockito.when(repository.findById(1L)).thenReturn(java.util.Optional.of(templateClient));
         Mockito.when(repository.findAll()).thenReturn(list);
     }
 
@@ -47,17 +47,16 @@ public class ClientServiceTests {
     @Test
     @DisplayName("Should return list of clients")
     void shouldReturnListOfClients() {
-        var cli = new Client(1L, "Vinicius", "vinicius@gmail.com");
         var actual = service.findAll();
         Assertions.assertAll(
                 () -> assertNotNull(actual),
-                () -> assertEquals(actual.get(0).getName(), cli.getName()),
-                () -> assertEquals(actual.get(0).getEmail(), cli.getEmail()),
-                () -> assertEquals(actual.get(0).getId(), cli.getId()));
+                () -> assertEquals(actual.get(0).getName(), templateClient.getName()),
+                () -> assertEquals(actual.get(0).getEmail(), templateClient.getEmail()),
+                () -> assertEquals(actual.get(0).getId(), templateClient.getId()));
     }
 
     @Test
-    @DisplayName("ShouldReturnEmptyListWhenDatabaseIsEmpty")
+    @DisplayName("Should return empty list when database is empty")
     void ShouldReturnEmptyListWhenDatabaseIsEmpty() {
         Mockito.when(repository.findAll()).thenReturn(new ArrayList<Client>());
         var expected = service.findAll();
