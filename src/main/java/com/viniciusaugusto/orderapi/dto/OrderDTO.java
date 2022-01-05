@@ -1,5 +1,6 @@
 package com.viniciusaugusto.orderapi.dto;
 
+import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.entities.Order;
 import com.viniciusaugusto.orderapi.enums.OrderStatus;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class OrderDTO {
     private Long id;
     private Instant moment;
     private OrderStatus status;
-    private ClientDTO client;
+    private ClientResponseDTO client;
     private List<OrderItemDTO> items = new ArrayList<>();
     private Double getTotal;
 
@@ -26,7 +27,7 @@ public class OrderDTO {
         id = order.getId();
         moment = order.getMoment();
         status = order.getStatus();
-        client = new ClientDTO(order.getClient());
+        client = new ClientResponseDTO(order.getClient());
         order.getItems().forEach(item -> this.items.add(new OrderItemDTO(item)));
         getTotal = order.getTotal();
     }

@@ -1,4 +1,4 @@
-package com.viniciusaugusto.orderapi.dto;
+package com.viniciusaugusto.orderapi.dto.responses;
 
 
 import com.viniciusaugusto.orderapi.entities.Client;
@@ -9,13 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClientDTO {
+public class ClientResponseDTO {
 
     private Long id;
     private String name;
     private String email;
 
-    public ClientDTO(Client client) {
+    public ClientResponseDTO(Client client) {
         id = client.getId();
         name = client.getName();
         email = client.getEmail();

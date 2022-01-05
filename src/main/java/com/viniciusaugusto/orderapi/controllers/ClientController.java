@@ -1,8 +1,7 @@
 package com.viniciusaugusto.orderapi.controllers;
 
-import com.viniciusaugusto.orderapi.dto.ClientDTO;
-import com.viniciusaugusto.orderapi.entities.Client;
-import com.viniciusaugusto.orderapi.repositories.ClientRepository;
+import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
+import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
 import com.viniciusaugusto.orderapi.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,18 +25,18 @@ public class ClientController {
     private ClientService service;
 
     @GetMapping
-    public ResponseEntity<List<ClientDTO>> findAll() {
+    public ResponseEntity<List<ClientResponseDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<ClientResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void insert (@RequestBody ClientDTO client) {
+    public void insert (@RequestBody ClientRequestDTO client) {
         service.insert(client);
     }
 

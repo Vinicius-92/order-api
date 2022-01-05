@@ -1,6 +1,7 @@
 package com.viniciusaugusto.orderapi.services.impl;
 
-import com.viniciusaugusto.orderapi.dto.ClientDTO;
+import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
+import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
 import com.viniciusaugusto.orderapi.entities.Client;
 import com.viniciusaugusto.orderapi.exceptions.ClientNotFoundException;
 import com.viniciusaugusto.orderapi.repositories.ClientRepository;
@@ -17,18 +18,18 @@ public class ClientServiceImpl implements ClientService {
     public ClientRepository repository;
 
     @Override
-    public List<ClientDTO> findAll() {
+    public List<ClientResponseDTO> findAll() {
         List<Client> list = repository.findAll();
-        return list.stream().map(ClientDTO::new).collect(Collectors.toList());
+        return list.stream().map(ClientResponseDTO::new).collect(Collectors.toList());
     }
 
     @Override
-    public ClientDTO findById(Long id) throws ClientNotFoundException {
-        return new ClientDTO(repository.findById(id).orElseThrow(() -> new ClientNotFoundException(id)));
+    public ClientResponseDTO findById(Long id) throws ClientNotFoundException {
+        return new ClientResponseDTO(repository.findById(id).orElseThrow(() -> new ClientNotFoundException(id)));
     }
 
     @Override
-    public void insert(ClientDTO dto) {
+    public void insert(ClientRequestDTO dto) {
         Client clientToSave = repository.save(new Client(dto));
     }
 

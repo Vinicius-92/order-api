@@ -1,6 +1,6 @@
 package com.viniciusaugusto.orderapi.services;
 
-import com.viniciusaugusto.orderapi.dto.ClientDTO;
+import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.entities.Client;
 import com.viniciusaugusto.orderapi.exceptions.ClientNotFoundException;
 import com.viniciusaugusto.orderapi.repositories.ClientRepository;
@@ -9,9 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +34,7 @@ public class ClientServiceTests {
     @DisplayName("Should return valid client dto when id is valid")
     void shouldReturnValidClientWhenIdIsValid() {
         var actual = service.findById(1L);
-        var expected = new ClientDTO(new Client(1L, "Vinicius", "vinicius@gmail.com"));
+        var expected = new ClientResponseDTO(new Client(1L, "Vinicius", "vinicius@gmail.com"));
         assertAll(() -> actual.getEmail().equals(expected.getEmail()),
                   () -> actual.getName().equals(expected.getName()),
                   () -> actual.getId().equals(expected.getId()));
