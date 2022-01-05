@@ -1,14 +1,12 @@
 package com.viniciusaugusto.orderapi.services;
 
+import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
 import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.entities.Client;
 import com.viniciusaugusto.orderapi.exceptions.ClientNotFoundException;
 import com.viniciusaugusto.orderapi.repositories.ClientRepository;
 import com.viniciusaugusto.orderapi.services.impl.ClientServiceImpl;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -30,15 +28,19 @@ public class ClientServiceTests {
         Mockito.when(repository.findAll()).thenReturn(list);
     }
 
+    private void assertClientsAreEqual(ClientResponseDTO actual, ClientResponseDTO expected) {
+        assertAll(() -> actual.getEmail().equals(expected.getEmail()),
+                () -> actual.getName().equals(expected.getName()),
+                () -> actual.getId().equals(expected.getId()));
+    }
+
     @Test
     @DisplayName("Should return valid client dto when id is valid")
     void shouldReturnValidClientWhenIdIsValid() {
         var actual = service.findById(1L);
         var expected = new ClientResponseDTO(new Client(1L, "Vinicius", "vinicius@gmail.com"));
-        assertAll(() -> actual.getEmail().equals(expected.getEmail()),
-                  () -> actual.getName().equals(expected.getName()),
-                  () -> actual.getId().equals(expected.getId()));
-    };
+        assertClientsAreEqual(actual, expected);
+    }
 
     @Test
     @DisplayName("Should throw ClientNotFoundException when given invalid id")
@@ -63,5 +65,14 @@ public class ClientServiceTests {
         Mockito.when(repository.findAll()).thenReturn(new ArrayList<Client>());
         var expected = service.findAll();
         assertTrue(expected.isEmpty());
+    }
+
+    // TODO: Implement return, mock repository to return registry with id
+    @Test
+    @Disabled
+    @DisplayName("Should insert new client and return ClientResponse when valid args")
+    void ShouldInsertNewClientAndReturnClientResponseWhenValidArgs() {
+        var actual = templateClient;
+        var expected = service.insert(new ClientRequestDTO(actual.getName(), actual.getEmail()));
     }
 }

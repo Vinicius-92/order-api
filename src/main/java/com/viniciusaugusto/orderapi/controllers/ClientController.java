@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 
 
@@ -36,8 +39,16 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void insert (@RequestBody ClientRequestDTO client) {
-        service.insert(client);
+    public ResponseEntity<ClientResponseDTO> insert (@RequestBody ClientRequestDTO client) {
+        var createdClient = service.insert(client);
+        var uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("{/id}")
+                .buildAndExpand(createdClient.getId())
+                .toUri();
+        return ResponseEntity
+                .created(uri)
+                .body(createdClient);
     }
 
     @DeleteMapping(value = "/{id}")

@@ -29,8 +29,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void insert(ClientRequestDTO dto) {
+    public ClientResponseDTO insert(ClientRequestDTO dto) {
         Client clientToSave = repository.save(new Client(dto));
+        return new ClientResponseDTO(clientToSave);
     }
 
     @Override

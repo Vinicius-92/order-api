@@ -10,7 +10,7 @@ public abstract interface ClientService {
 
     public ClientResponseDTO findById(Long id);
 
-    public void insert(ClientRequestDTO dto);
+    public ClientResponseDTO insert(ClientRequestDTO dto);
 
      public void delete(Long id);
 }
