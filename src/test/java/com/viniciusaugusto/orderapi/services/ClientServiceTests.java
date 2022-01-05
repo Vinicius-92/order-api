@@ -4,11 +4,14 @@ import com.viniciusaugusto.orderapi.dto.ClientDTO;
 import com.viniciusaugusto.orderapi.entities.Client;
 import com.viniciusaugusto.orderapi.exceptions.ClientNotFoundException;
 import com.viniciusaugusto.orderapi.repositories.ClientRepository;
+import com.viniciusaugusto.orderapi.services.impl.ClientServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ClientServiceTests {
 
+    private final ClientServiceImpl service = new ClientServiceImpl();
     private final ClientRepository repository = Mockito.mock(ClientRepository.class);
-    private final ClientService service = new ClientService(repository);
     private final Client templateClient = new Client(1L, "Vinicius", "vinicius@gmail.com");
 
     @BeforeEach
     void setUp() {
+        service.repository = repository;
         var list = new ArrayList<Client>(List.of(templateClient));
         Mockito.when(repository.findById(1L)).thenReturn(java.util.Optional.of(templateClient));
         Mockito.when(repository.findAll()).thenReturn(list);
