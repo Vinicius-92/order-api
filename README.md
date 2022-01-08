@@ -8,14 +8,17 @@ A fully functional API that control order with the association with order items 
 
 * Java 11
 * Maven
+* JUnit
 * H2-Database
 * Spring Boot
 * Spring Data Jpa
 * Lombok
+* Swagger Documentation
 
 ### What I've learned: 
 
 How to structure a Spring Boot Java application using best practices and SOLID principles, using dependencies from Maven like Lombok to save time and create more readable and easy to maintain code. I also learn got a better understanding of associations (One to Many, Many to One, etc) using annotations. I've also have learned the importance of DTO and Service classes.
+**Update:** Returning to the project a few months later I'm now implementing tests and improving the overall architecture.
 
 ### Swagger Documentation:
 
