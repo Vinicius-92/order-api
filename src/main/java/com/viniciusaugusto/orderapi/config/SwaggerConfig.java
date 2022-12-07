@@ -17,8 +17,9 @@ public class SwaggerConfig {
     public Docket apiDoc() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.viniciusaugusto.orderapi.controllers"))
                 .paths(PathSelectors.any())
                 .build();
     }
