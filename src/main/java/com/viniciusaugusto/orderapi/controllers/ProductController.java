@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @Api(tags = "Products")
-@RequestMapping(value = "/products",  produces = "application/json", consumes = "application/json")
+@RequestMapping(value = "/products",  produces = "application/json")
 public class ProductController {
 
     private final ProductService service;

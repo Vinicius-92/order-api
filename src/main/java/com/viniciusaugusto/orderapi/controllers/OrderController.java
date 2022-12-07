@@ -23,7 +23,7 @@ import java.util.List;
 
 @RestController
 @Api(tags = "Orders")
-@RequestMapping(value = "/orders", produces = "application/json", consumes = "application/json")
+@RequestMapping(value = "/orders", produces = "application/json")
 public class OrderController {
 
     private final OrderService service;

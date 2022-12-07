@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @Api(tags = "Clients")
-@RequestMapping(value = "/clients", produces = "application/json", consumes = "application/json")
+@RequestMapping(value = "/clients", produces = "application/json")
 public class ClientController {
 
     private final ClientService service;
