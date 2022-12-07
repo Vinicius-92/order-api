@@ -4,8 +4,6 @@ import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
 import com.viniciusaugusto.orderapi.services.ClientService;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
 @RestController
+@Api(tags = "Clients")
 @RequestMapping(value = "/clients", produces = "application/json", consumes = "application/json")
 public class ClientController {
 
@@ -36,8 +34,8 @@ public class ClientController {
         return ResponseEntity.ok().body(service.findAll());
     }
 
-    @ApiOperation(value = "Returns client by ID.")
     @GetMapping(value = "/{id}")
+    @ApiOperation(value = "Returns client by ID.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK."),
             @ApiResponse(code = 404, message = "Client not found.")
@@ -49,7 +47,7 @@ public class ClientController {
     @PostMapping
     @ApiOperation(value = "Create a new client in database.")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Created with success."),
+            @ApiResponse(code = 201, message = "Client created with success."),
             @ApiResponse(code = 400, message = "Problem with request.")
     })
     public ResponseEntity<ClientResponseDTO> insert(@RequestBody ClientRequestDTO client) {
