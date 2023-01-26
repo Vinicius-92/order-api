@@ -1,11 +1,11 @@
 package com.viniciusaugusto.orderapi.entities;
 
 import com.viniciusaugusto.orderapi.enums.OrderStatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +39,7 @@ public class Order {
         for (OrderItem item : items) {
             sum += item.getSubTotal();
         }
+        // TODO: Adicionar reference method em padrão stream.
         return sum;
     }
 
