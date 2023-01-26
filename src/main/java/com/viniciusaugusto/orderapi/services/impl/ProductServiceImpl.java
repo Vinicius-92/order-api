@@ -5,7 +5,6 @@ import com.viniciusaugusto.orderapi.entities.Product;
 import com.viniciusaugusto.orderapi.exceptions.ProductNotFoundException;
 import com.viniciusaugusto.orderapi.repositories.ProductRepository;
 import com.viniciusaugusto.orderapi.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +12,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-    @Autowired
+
     public ProductRepository repository;
+
+    public ProductServiceImpl(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<ProductDTO> findAll() {
@@ -24,12 +27,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO findById(Long id) throws ProductNotFoundException {
-        return new ProductDTO(repository.findById(id).orElseThrow(() -> new ProductNotFoundException(id)));
+        return new ProductDTO(repository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id)));
     }
 
     @Override
     public void insert(ProductDTO dto) {
-        Product product = repository.save(new Product(dto));
+        repository.save(new Product(dto));
     }
 
     @Override

@@ -5,15 +5,15 @@ import com.viniciusaugusto.orderapi.entities.Order;
 import java.util.List;
 
 
-public abstract interface OrderService {
+public interface OrderService {
 
-    public List<OrderDTO> findAll();
+    List<OrderDTO> findAll();
 
-    public OrderDTO findById(Long id);
+    OrderDTO findById(Long id);
 
-    public void insert(Order order);
+    void insert(Order order);
 
-    public void delete(Long id);
+    void delete(Long id);
 }
 
 

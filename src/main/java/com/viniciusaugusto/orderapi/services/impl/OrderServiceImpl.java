@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    @Autowired
-    private OrderRepository repository;
+
+    private final OrderRepository repository;
+
+    public OrderServiceImpl(OrderRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<OrderDTO> findAll() {
@@ -24,7 +28,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO findById(Long id) {
-        return new OrderDTO(repository.findById(id).orElseThrow(() -> new OrderNotFoundException(id)));
+        return new OrderDTO(repository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException(id)));
     }
 
     @Override

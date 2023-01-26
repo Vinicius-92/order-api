@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ClientServiceTests {
 
-    private final ClientServiceImpl service = new ClientServiceImpl();
+    private ClientServiceImpl service;
     private final ClientRepository repository = Mockito.mock(ClientRepository.class);
     private final Client templateClient = new Client(1L, "Vinicius", "vinicius@gmail.com");
 
     @BeforeEach
     void setUp() {
-        service.repository = repository;
+        service = new ClientServiceImpl(repository);
         var list = new ArrayList<Client>(List.of(templateClient));
         Mockito.when(repository.findById(1L)).thenReturn(java.util.Optional.of(templateClient));
         Mockito.when(repository.findAll()).thenReturn(list);

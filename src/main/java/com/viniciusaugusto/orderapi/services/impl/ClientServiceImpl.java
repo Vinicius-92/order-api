@@ -14,8 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ClientServiceImpl implements ClientService {
-    @Autowired
+
     public ClientRepository repository;
+
+    public ClientServiceImpl(ClientRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<ClientResponseDTO> findAll() {
@@ -25,7 +29,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientResponseDTO findById(Long id) throws ClientNotFoundException {
-        return new ClientResponseDTO(repository.findById(id).orElseThrow(() -> new ClientNotFoundException(id)));
+        return new ClientResponseDTO(repository.findById(id)
+                .orElseThrow(() -> new ClientNotFoundException(id)));
     }
 
     @Override

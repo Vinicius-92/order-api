@@ -4,15 +4,15 @@ import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
 import java.util.List;
 
-public abstract interface ClientService {
+public interface ClientService {
 
-    public List<ClientResponseDTO> findAll();
+    List<ClientResponseDTO> findAll();
 
-    public ClientResponseDTO findById(Long id);
+    ClientResponseDTO findById(Long id);
 
-    public ClientResponseDTO insert(ClientRequestDTO dto);
+    ClientResponseDTO insert(ClientRequestDTO dto);
 
-     public void delete(Long id);
+     void delete(Long id);
 }
 
 
