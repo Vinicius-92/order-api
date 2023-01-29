@@ -1,11 +1,11 @@
 package com.viniciusaugusto.orderapi.entities;
 
 import com.viniciusaugusto.orderapi.enums.OrderStatus;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;

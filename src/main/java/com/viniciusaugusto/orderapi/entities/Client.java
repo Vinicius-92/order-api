@@ -1,7 +1,7 @@
 package com.viniciusaugusto.orderapi.entities;
 
 import com.viniciusaugusto.orderapi.dto.requests.ClientRequestDTO;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 @Data
