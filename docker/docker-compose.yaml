@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  db:
+    build: ./postgres/
+    restart: always
+    env_file:
+      - config/db.env
+    ports:
+      - "5432:5432"
+    networks:
+      - orders_network
+
+networks:
+  orders_network:
+    driver: bridge

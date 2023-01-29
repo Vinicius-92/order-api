@@ -9,9 +9,10 @@ A fully functional API that control order with the association with order items 
 * Java 11
 * Maven
 * JUnit
-* H2-Database
 * Spring Boot
 * Spring Data Jpa
+* Docker and Docker-compose
+* PostgreSQL
 * Lombok
 * Swagger Documentation
 
@@ -30,6 +31,15 @@ You can access after the project is running in the /swagger-ui.html endpoint.
 
 You can use an API Test application, Postman or Insomnia, to test the endpoints you'll clone the project to your machine and run, you'll need Java 11 and Maven 3.8.1. The commands to clone and to run are the following:
 
+Create docker database:
+In order to create and use the database, you'll need Docker and docker compose installed on your machine, 
+if that is the case you can enter the docker directory and run the command bellow.
+```shell script
+docker compose up -d
+```
+This command will automatically build de image for the postgres database, create the database and add a few 
+resources for you to test the endpoints. 
+
 Clone:
 ```shell script
 git clone https://github.com/Vinicius-92/order-api.git
@@ -40,52 +50,10 @@ Run: (in the root of project directory)
 mvn spring-boot:run
 ```
 
-#### Endpoints:
-
-GET - List all entities in database:
-```
-/clients
-/orders
-/products
-```
-
-GET - Fetch specific data by ID:
-```
-/clients/{id}
-/orders/{id}
-/products/{id}
-```
-
-DELET - Delete a register by ID:
-```
-/clients/{id}
-/orders/{id}
-/products/{id}
-```
-
-POST - Create entity instance:
-```
-/clients/{id}
-/products/{id}
-```
-JSON required in body:
-```json
-Client:
-{
-    "name": "Example name",
-    "email": "example@email.com"
-}
-
-Product:
-{
-    "name": "Product Name",
-    "price": 1999.0
-}
-``` 
-
 ### To-do:
 * ~Added Swagger Documentation~-> Done
 * ~Separate the class repository to delegate the responsibility for the service class~ -> Done
 * ~Create a DTO object in order to improve how the responses from endpoints can be more efficient~ -> Done
 * ~Create a database to test application's endpoints~ -> Done
 * ~Create personalized exceptions~ -> Done
+* ~Add a docker and docker compose file to automatically create the database~ -> Done
