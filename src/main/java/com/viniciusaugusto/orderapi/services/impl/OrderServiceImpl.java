@@ -39,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void delete(Long id) {
+        this.findById(id);
         repository.deleteById(id);
     }
 }

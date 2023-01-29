@@ -38,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void delete(Long id) {
+        this.findById(id);
         repository.deleteById(id);
     }
 }

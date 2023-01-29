@@ -72,7 +72,8 @@ public class ClientController {
             @ApiResponse(responseCode =  "404", description = "Client not found."),
             @ApiResponse(responseCode =  "400", description = "Problem with request.")
     })
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

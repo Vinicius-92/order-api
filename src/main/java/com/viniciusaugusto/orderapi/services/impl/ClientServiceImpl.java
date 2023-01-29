@@ -8,8 +8,10 @@ import com.viniciusaugusto.orderapi.repositories.ClientRepository;
 import com.viniciusaugusto.orderapi.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +43,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void delete(Long id) {
+        this.findById(id);
         repository.deleteById(id);
     }
 }
