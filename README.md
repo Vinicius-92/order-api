@@ -29,21 +29,22 @@ You can access after the project is running in the /swagger-ui.html endpoint.
 
 ### How to use:
 
-You can use an API Test application, Postman or Insomnia, to test the endpoints you'll clone the project to your machine and run, you'll need Java 11 and Maven 3.8.1. The commands to clone and to run are the following:
-
-Create docker database:
-In order to create and use the database, you'll need Docker and docker compose installed on your machine, 
-if that is the case you can enter the docker directory and run the command bellow.
-```shell script
-docker compose up -d
-```
-This command will automatically build de image for the postgres database, create the database and add a few 
-resources for you to test the endpoints. 
+You can use an API Test application, Postman or Insomnia, to test the endpoints you'll clone the project 
+to your machine and run, you'll need Java 11 and Maven 3.8.1. The commands to clone and to run are the following:
 
 Clone:
 ```shell script
 git clone https://github.com/Vinicius-92/order-api.git
 ```
+
+Create docker database:
+In order to create and use the database, you'll need Docker and docker compose installed on your machine,
+if that is the case you can enter the docker directory and run the command bellow.
+```shell script
+docker compose up -d
+```
+This command will automatically build de image for the postgres database, create the database and add a few
+resources for you to test the endpoints.
 
 Run: (in the root of project directory)
 ```shell script
