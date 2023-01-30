@@ -32,8 +32,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void insert(ProductDTO dto) {
-        repository.save(new Product(dto));
+    public ProductDTO insert(ProductDTO dto) {
+        var productSaved = repository.save(new Product(dto));
+        return new ProductDTO(productSaved);
     }
 
     @Override

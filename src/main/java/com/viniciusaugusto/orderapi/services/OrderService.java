@@ -11,7 +11,7 @@ public interface OrderService {
 
     OrderDTO findById(Long id);
 
-    void insert(Order order);
+    OrderDTO insert(Order order);
 
     void delete(Long id);
 }

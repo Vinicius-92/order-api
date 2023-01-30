@@ -33,8 +33,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void insert(Order order) {
-        repository.save(order);
+    public OrderDTO insert(Order order) {
+        var orderSaved = repository.save(order);
+        return new OrderDTO(orderSaved);
     }
 
     @Override

@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,7 +59,15 @@ public class ProductController {
             @ApiResponse(responseCode = "201", description = "Product created with success."),
             @ApiResponse(responseCode = "400", description = "Problem with request.")
     })
-    public void insert(@RequestBody @Valid ProductDTO product) {
-        service.insert(product);
+    public ResponseEntity<ProductDTO> insert(@RequestBody @Valid ProductDTO product) {
+        var createdProduct = service.insert(product);
+        var uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("{/id}")
+                .buildAndExpand(createdProduct.getId())
+                .toUri();
+        return ResponseEntity
+                .created(uri)
+                .body(createdProduct);
     }
 }

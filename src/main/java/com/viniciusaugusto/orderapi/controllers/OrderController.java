@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.lang.annotation.Target;
@@ -54,8 +55,16 @@ public class OrderController {
             @ApiResponse(responseCode = "201", description = "Order created with success."),
             @ApiResponse(responseCode = "400", description = "Problem with request.")
     })
-    public void insert (@RequestBody @Valid Order order) {
-        service.insert(order);
+    public ResponseEntity<OrderDTO> insert (@RequestBody @Valid Order order) {
+        var createdOrder = service.insert(order);
+        var uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("{/id}")
+                .buildAndExpand(createdOrder.getId())
+                .toUri();
+        return ResponseEntity
+                .created(uri)
+                .body(createdOrder);
     }
 
     @DeleteMapping(value = "/{id}")

@@ -9,7 +9,7 @@ public interface ProductService {
 
     ProductDTO findById(Long id);
     
-    void insert(ProductDTO dto);
+    ProductDTO insert(ProductDTO dto);
 
     void delete(Long id);
 }
