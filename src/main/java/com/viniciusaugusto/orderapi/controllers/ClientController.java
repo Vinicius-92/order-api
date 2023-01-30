@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -53,7 +54,7 @@ public class ClientController {
             @ApiResponse(responseCode =  "201", description = "Client created with success."),
             @ApiResponse(responseCode =  "400", description = "Problem with request.")
     })
-    public ResponseEntity<ClientResponseDTO> insert(@RequestBody ClientRequestDTO client) {
+    public ResponseEntity<ClientResponseDTO> insert(@RequestBody @Valid ClientRequestDTO client) {
         var createdClient = service.insert(client);
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()

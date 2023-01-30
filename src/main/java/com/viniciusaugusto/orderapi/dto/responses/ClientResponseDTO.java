@@ -2,12 +2,10 @@ package com.viniciusaugusto.orderapi.dto.responses;
 
 
 import com.viniciusaugusto.orderapi.entities.Client;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class ClientResponseDTO {
 

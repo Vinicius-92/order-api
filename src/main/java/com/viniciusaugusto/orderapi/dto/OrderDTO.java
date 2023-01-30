@@ -3,16 +3,14 @@ package com.viniciusaugusto.orderapi.dto;
 import com.viniciusaugusto.orderapi.dto.responses.ClientResponseDTO;
 import com.viniciusaugusto.orderapi.entities.Order;
 import com.viniciusaugusto.orderapi.enums.OrderStatus;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class OrderDTO {
 

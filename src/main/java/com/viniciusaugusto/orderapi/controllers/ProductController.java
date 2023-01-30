@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -40,16 +41,6 @@ public class ProductController {
            return ResponseEntity.ok().body(service.findById(id));
     }
 
-    @PostMapping
-    @Operation(summary = "Create a new product in database.")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Product created with success."),
-            @ApiResponse(responseCode = "400", description = "Problem with request.")
-    })
-    public void insert(@RequestBody ProductDTO product) {
-        service.insert(product);
-    }
-
     @DeleteMapping(value = "/{id}")
     @Operation(summary = "Delete product by ID.")
     @ApiResponses(value = {
@@ -59,5 +50,15 @@ public class ProductController {
     })
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @PostMapping
+    @Operation(summary = "Create a new product in database.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Product created with success."),
+            @ApiResponse(responseCode = "400", description = "Problem with request.")
+    })
+    public void insert(@RequestBody @Valid ProductDTO product) {
+        service.insert(product);
     }
 }

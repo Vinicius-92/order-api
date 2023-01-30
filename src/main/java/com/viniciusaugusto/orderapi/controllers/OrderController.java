@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.lang.annotation.Target;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class OrderController {
             @ApiResponse(responseCode = "201", description = "Order created with success."),
             @ApiResponse(responseCode = "400", description = "Problem with request.")
     })
-    public void insert (@RequestBody Order order) {
+    public void insert (@RequestBody @Valid Order order) {
         service.insert(order);
     }
 

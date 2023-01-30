@@ -1,17 +1,22 @@
 package com.viniciusaugusto.orderapi.dto;
 
 import com.viniciusaugusto.orderapi.entities.Product;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+import javax.validation.constraints.*;
+
+@Data
 @NoArgsConstructor
 public class ProductDTO {
 
     private Long id;
+    @NotNull(message = "Name can't be null or empty")
+    @Size(min = 3, max = 25)
     private String name;
+    @NotNull(message = "Price can't be null or empty")
+    @Max(value = 999, message = "Price can't exceed 999.00")
+    @Min(value = 5, message = "Price can't be lower than 5")
     private Double price;
 
     public ProductDTO(Product product) {

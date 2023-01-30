@@ -1,12 +1,10 @@
 package com.viniciusaugusto.orderapi.dto;
 
 import com.viniciusaugusto.orderapi.entities.OrderItem;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class OrderItemDTO {
 
