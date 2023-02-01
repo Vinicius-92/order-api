@@ -10,4 +10,10 @@ import lombok.NoArgsConstructor;
 public class ClientRequestDTO {
     private String name;
     private String email;
+    private String phoneNumber;
+    private String streetName;
+    private String city;
+    private String state;
+    private String homeNumber;
+    private String zipCode;
 }

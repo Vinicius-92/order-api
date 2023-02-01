@@ -12,10 +12,22 @@ public class ClientResponseDTO {
     private Long id;
     private String name;
     private String email;
+    private String phoneNumber;
+    private String streetName;
+    private String city;
+    private String state;
+    private String homeNumber;
+    private String zipCode;
 
     public ClientResponseDTO(Client client) {
-        id = client.getId();
-        name = client.getName();
-        email = client.getEmail();
+        this.id = client.getId();
+        this.name = client.getName();
+        this.email = client.getEmail();
+        this.phoneNumber = client.getPhoneNumber();
+        this.streetName = client.getStreetName();
+        this.city = client.getCity();
+        this.state = client.getState();
+        this.homeNumber = client.getHomeNumber();
+        this.zipCode = client.getZipCode();
     }
 }
